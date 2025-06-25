@@ -20,6 +20,7 @@ def get_current_weather_data(city, api_key):
     actual_temperature = open_weather_response["main"]["temp"]
     weather = open_weather_response["weather"][0]["main"]
     description = open_weather_response["weather"][0]["description"]
+    wind_speed = open_weather_response["wind"]["speed"]
 
     if "rain" in open_weather_response.keys():
         rain = open_weather_response["rain"]["1h"]
@@ -36,6 +37,7 @@ def get_current_weather_data(city, api_key):
         "weather": weather,
         "description": description,
         "temperature": actual_temperature,
+        "wind speed": wind_speed,
         "rain": rain,
         "snow": snow,
         "date time": datetime.now().strftime("%Y-%m-%d"),
