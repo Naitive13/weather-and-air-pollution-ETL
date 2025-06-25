@@ -1,6 +1,8 @@
 from datetime import datetime
+import pandas as pd
 
 import requests
+import logging
 from get_coordinates import get_coordinates
 
 
@@ -21,6 +23,7 @@ def get_current_weather_data(city, api_key):
     weather = open_weather_response["weather"][0]["main"]
     description = open_weather_response["weather"][0]["description"]
     wind_speed = open_weather_response["wind"]["speed"]
+    date = datetime.now().strftime("%Y-%m-%d")
 
     if "rain" in open_weather_response.keys():
         rain = open_weather_response["rain"]["1h"]
@@ -33,14 +36,17 @@ def get_current_weather_data(city, api_key):
         snow = 0.00
 
     data = {
-        "name": city,
-        "weather": weather,
-        "description": description,
-        "temperature": actual_temperature,
-        "wind speed": wind_speed,
-        "rain": rain,
-        "snow": snow,
-        "date time": datetime.now().strftime("%Y-%m-%d"),
+        "name": [city],
+        "weather": [weather],
+        "description": [description],
+        "temperature": [actual_temperature],
+        "wind speed": [wind_speed],
+        "rain": [rain],
+        "snow": [snow],
+        "date": [date],
     }
 
-    return data
+    df = pd.DataFrame(data)
+    df.to_csv(f"../data/weather/weather_{city}_{date}")
+
+    return True
