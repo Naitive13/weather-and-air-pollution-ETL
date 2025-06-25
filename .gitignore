@@ -2,3 +2,5 @@
 .env
 .ropeproject
 __pycache__
+client_secret.json
+
