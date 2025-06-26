@@ -48,7 +48,7 @@ def get_current_weather_data(city, api_key):
         }
 
         df = pd.DataFrame(data)
-        df.to_csv(f"../data/weather/weather_{city}_{date}")
+        df.to_csv(f"../data/weather/weather_{city}", index=False)
 
         return True
     except requests.exceptions.RequestException as e:
