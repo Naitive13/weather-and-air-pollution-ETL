@@ -4,7 +4,7 @@ import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-def merge_weather_data(cities):
+def merge_air_pollution_data(cities):
     try:
         scope = [
             "https://spreadsheets.google.com/feeds",
