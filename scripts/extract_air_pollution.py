@@ -30,6 +30,7 @@ def get_current_air_pollution_data(city, api_key):
         date = datetime.now().strftime("%Y-%m-%d")
 
         data = {
+            "name": [city],
             "air quality index": [air_quality_index],
             "carbon monoxide": [carbon_monoxide],
             "nitrogen dioxide": [nitrogen_dioxide],
