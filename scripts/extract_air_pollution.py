@@ -37,7 +37,7 @@ def get_current_air_pollution_data(city, api_key):
             "ozone": [ozone],
             "particulate matter 2.5": [particulate_matter_2_5],
             "particulate matter 10": [particulate_matter_10],
-            "date": [date],
+            "date time": [date],
         }
 
         df = pd.DataFrame(data)
