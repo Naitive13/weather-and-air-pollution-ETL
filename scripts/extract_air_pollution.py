@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 import logging
 import pandas as pd
-from get_coordinates import get_coordinates
+from .get_coordinates import get_coordinates
 
 
 def get_current_air_pollution_data(city, api_key):

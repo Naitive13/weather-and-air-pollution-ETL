@@ -3,7 +3,7 @@ import pandas as pd
 
 import requests
 import logging
-from get_coordinates import get_coordinates
+from .get_coordinates import get_coordinates
 
 
 def get_current_weather_data(city, api_key):
