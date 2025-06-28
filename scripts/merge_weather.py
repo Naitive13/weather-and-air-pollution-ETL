@@ -2,6 +2,7 @@ import gspread
 import logging
 import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
+from pathlib import Path
 
 
 def merge_weather_data(cities):
@@ -13,9 +14,8 @@ def merge_weather_data(cities):
             "https://www.googleapis.com/auth/drive",
         ]
 
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(
-            "../client_secret.json", scope
-        )
+        path = Path(__file__).parent / "../client_secret.json"
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
         client = gspread.authorize(credentials)
         spreadsheet = client.open("Weather-ETL").worksheet("Weather-ETL")
 
@@ -33,5 +33,5 @@ def merge_weather_data(cities):
 
         return True
     except Exception as e:
-        print(f"Error while merging weather data: {str(e)}")
+        logging.error(f"Error while merging weather data: {str(e)}")
         return False
