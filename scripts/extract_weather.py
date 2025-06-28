@@ -48,9 +48,9 @@ def get_current_weather_data(city, api_key):
             "date": [date],
         }
 
-        os.makedirs("data/weather", exist_ok=True)
+        os.makedirs("../data/weather", exist_ok=True)
         df = pd.DataFrame(data)
-        df.to_csv(f"data/weather/weather_{city}", index=False)
+        df.to_csv(f"../data/weather/weather_{city}", index=False)
 
         return True
     except requests.exceptions.RequestException as e:

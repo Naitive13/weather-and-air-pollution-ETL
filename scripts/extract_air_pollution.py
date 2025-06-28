@@ -42,8 +42,8 @@ def get_current_air_pollution_data(city, api_key):
         }
 
         df = pd.DataFrame(data)
-        os.makedirs("data/air_pollution", exist_ok=True)
-        df.to_csv(f"data/air_pollution/air_pollution_{city}", index=False)
+        os.makedirs("../data/air_pollution", exist_ok=True)
+        df.to_csv(f"../data/air_pollution/air_pollution_{city}", index=False)
 
         return True
     except requests.exceptions.RequestException as e:
