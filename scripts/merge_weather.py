@@ -21,7 +21,7 @@ def merge_weather_data(cities):
 
         for city in cities:
             try:
-                df = pd.read_csv(f"../data/weather_{city}", index_col=False)
+                df = pd.read_csv(f"/data/weather/weather_{city}", index_col=False)
                 for index, row in df.iterrows():
                     spreadsheet.append_row(row.to_list())
             except FileNotFoundError:

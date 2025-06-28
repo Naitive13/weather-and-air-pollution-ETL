@@ -2,6 +2,7 @@ from datetime import datetime
 
 import requests
 import logging
+import os
 import pandas as pd
 from .get_coordinates import get_coordinates
 
@@ -41,7 +42,8 @@ def get_current_air_pollution_data(city, api_key):
         }
 
         df = pd.DataFrame(data)
-        df.to_csv(f"../data/air_pollution/air_pollution_{city}", index=False)
+        os.makedirs("data/air_pollution", exist_ok=True)
+        df.to_csv(f"data/air_pollution/air_pollution_{city}", index=False)
 
         return True
     except requests.exceptions.RequestException as e:

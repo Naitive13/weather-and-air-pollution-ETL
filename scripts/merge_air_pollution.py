@@ -22,7 +22,7 @@ def merge_air_pollution_data(cities):
         for city in cities:
             try:
                 df = pd.read_csv(
-                    f"../data/air_pollution/air_pollution_{city}", index_col=False
+                    f"/data/air_pollution/air_pollution_{city}", index_col=False
                 )
                 for index, row in df.iterrows():
                     spreadsheet.append_row(row.to_list())
