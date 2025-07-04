@@ -42,7 +42,8 @@ def merge_historical_weather_data(data, city):
         spreadsheet = client.open("Weather-ETL").worksheet(
             f"History-{city.replace(' ', '_')}"
         )
-        spreadsheet.append_rows(data)
+
+        spreadsheet.append_rows(data.values.tolist())
         return True
     except Exception as e:
         logging.error(f"Error while merging weather data: {str(e)}")
