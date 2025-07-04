@@ -1,7 +1,9 @@
 import sys
 import os
 
-from scripts.extract_historical_air_pollution import get_historical_air_pollution
+from dags.weather_and_air_pollution.scripts.extract_historical_air_pollution import (
+    get_historical_air_pollution,
+)
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from airflow import DAG
@@ -17,7 +19,7 @@ default_args = {
 }
 
 with DAG(
-    "weather_and_air_pollution_etl",
+    "extract_historical_air_pollution_etl",
     default_args=default_args,
     schedule="@daily",  # Exécution quotidienne
     catchup=False,  # Ne pas rattraper les exécutions passées
