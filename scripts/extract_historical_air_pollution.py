@@ -17,7 +17,7 @@ def get_historical_air_pollution(city, api_key):
             "lat": coordinates["lat"],
             "lon": coordinates["lon"],
             "appid": api_key,
-            "start": 1672531200,
+            "start": 1609459200,
             "end": 1751014800,
         }
         response = requests.get(url, params=params, timeout=100).json()
