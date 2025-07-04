@@ -26,6 +26,8 @@ def transform_historical_weather_data(city):
             }
             df.rename(columns=new_columns, inplace=True)
             df = df[["date time", "temperature", "wind speed", "rain", "snow"]]
+            df["name"] = [""] * 365
+            df.replace("", city, inplace=True)
             frames.append(df)
         data = pd.concat(frames)
         merge_historical_weather_data(data, city)

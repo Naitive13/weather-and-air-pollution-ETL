@@ -35,6 +35,7 @@ def get_historical_air_pollution(city, api_key):
                 particulate_matter_2_5 = item["components"]["pm2_5"]
                 particulate_matter_10 = item["components"]["pm10"]
                 row = [
+                    city,
                     date,
                     air_quality_index,
                     carbon_monoxide,
