@@ -25,7 +25,7 @@ def transform_historical_weather_data(city):
                 "wind_speed_10m_max (m/s)": "wind speed",
             }
             df.rename(columns=new_columns, inplace=True)
-            df = df[["temperature", "wind speed", "rain", "snow", "date time"]]
+            df = df[["date time", "temperature", "wind speed", "rain", "snow"]]
             frames.append(df)
         data = pd.concat(frames)
         merge_historical_weather_data(data, city)
