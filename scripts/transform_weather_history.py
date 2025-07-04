@@ -2,16 +2,18 @@ import os
 import pandas as pd
 import logging
 
+from pathlib import Path
 
 from .merge_historical_data import merge_historical_weather_data
 
 
 def transform_historical_weather_data(city):
+    path = Path(__file__).parent / "./weather-history"
     try:
-        file_names = [file for file in os.listdir("./weather-history") if city in file]
+        file_names = [file for file in os.listdir(path) if city in file]
         frames = []
         for file in file_names:
-            df = pd.read_csv(f"./weather-history/{file}", index_col=False)
+            df = pd.read_csv(f"{path}/{file}", index_col=False)
             df["snowfall_sum (cm)"] = df["snowfall_sum (cm)"] * 10
             new_columns = {
                 "time": "date time",
