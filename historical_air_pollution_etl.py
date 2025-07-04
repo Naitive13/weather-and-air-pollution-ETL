@@ -19,7 +19,7 @@ default_args = {
 }
 
 with DAG(
-    "extract_historical_air_pollution_etl",
+    "historical_air_pollution_etl",
     default_args=default_args,
     schedule="@daily",  # Exécution quotidienne
     catchup=False,  # Ne pas rattraper les exécutions passées
