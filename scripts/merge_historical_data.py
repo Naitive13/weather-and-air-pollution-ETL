@@ -20,7 +20,7 @@ def merge_historical_air_pollution_data(data, city):
         spreadsheet = client.open("Air-pollution-ETL").worksheet(
             f"History-{city.replace(' ', '_')}"
         )
-        spreadsheet.append_row(data)
+        spreadsheet.append_rows(data)
         return True
     except Exception as e:
         logging.error(f"Error while merging air pollution data: {str(e)}")

@@ -21,8 +21,9 @@ def get_historical_air_pollution(city, api_key):
             "end": 1751014800,
         }
         response = requests.get(url, params=params, timeout=100).json()
-        print(response)
+        # print(response)
         previous_date = ""
+        data = []
         for item in response["list"]:
             date = datetime.utcfromtimestamp(item["dt"]).strftime("%Y-%m-%d")
             if date != previous_date:
@@ -33,7 +34,7 @@ def get_historical_air_pollution(city, api_key):
                 ozone = item["components"]["o3"]
                 particulate_matter_2_5 = item["components"]["pm2_5"]
                 particulate_matter_10 = item["components"]["pm10"]
-                data = [
+                row = [
                     date,
                     air_quality_index,
                     carbon_monoxide,
@@ -42,7 +43,9 @@ def get_historical_air_pollution(city, api_key):
                     particulate_matter_2_5,
                     particulate_matter_10,
                 ]
-                merge_historical_air_pollution_data(data, city)
+                data.append(row)
+
+        merge_historical_air_pollution_data(data, city)
         logging.info(f"Historical data for {city} extracted!")
         return True
     except requests.exceptions.RequestException as e:
