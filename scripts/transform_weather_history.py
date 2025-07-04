@@ -10,7 +10,9 @@ from .merge_historical_data import merge_historical_weather_data
 def transform_historical_weather_data(city):
     path = Path(__file__).parent / "./weather-history"
     try:
-        file_names = [file for file in os.listdir(path) if city in file]
+        file_names = [
+            file for file in os.listdir(path) if city.replace(" ", "_") in file
+        ]
         frames = []
         for file in file_names:
             df = pd.read_csv(f"{path}/{file}", index_col=False)
