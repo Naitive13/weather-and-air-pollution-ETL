@@ -9,6 +9,7 @@ from . import (
     merge_weather,
     get_coordinates,
     extract_historical_air_pollution,
+    transform_weather_history,
 )
 
 __all__ = [
@@ -18,4 +19,5 @@ __all__ = [
     "merge_air_pollution",
     "get_coordinates",
     "extract_historical_air_pollution",
+    "transform_weather_history",
 ]
